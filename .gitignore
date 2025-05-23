@@ -1,2 +1,10 @@
 .idea
 large-number-addition-terraform.iml
+
+.terraform.lock.hcl
+.terraform.tfstate.lock.info
+terraform.tfstate
+terraform.tfstate.backup
+LICENSE.txt
+terraform-provider-aws_v5.82.2_x5
+terraform-provider-random_v3.7.2_x5
