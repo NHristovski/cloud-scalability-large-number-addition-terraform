@@ -1,0 +1,8 @@
+
+VMs: t3.micro 2 CPU 1G RAM
+
+scaling:
+ min: 1
+ max: 10
+
+ Client: 30 threads
