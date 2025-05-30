@@ -77,17 +77,23 @@ resource "aws_elastic_beanstalk_environment" "env" {
   }
 
   setting {
-    namespace = "aws:elasticbeanstalk:environment:process:default"
-    name      = "HealthCheckPath"
-    value     = "/ping"
+    namespace = "aws:elasticbeanstalk:application"
+    name      = "Application Healthcheck URL"
+    value     = "HTTP:8070/actuator/health"
   }
 
-  # Use CPUUtilization as scaling metric
   setting {
-    namespace = "aws:autoscaling:trigger"
-    name      = "MeasureName"
-    value     = "CPUUtilization"
+    namespace = "aws:elasticbeanstalk:environment:process:default"
+    name      = "HealthCheckPath"
+    value     = "/actuator/health"
   }
+
+  setting {
+    namespace = "aws:elasticbeanstalk:environment:process:default"
+    name      = "HealthCheckInterval"
+    value     = "30"
+  }
+
 
   setting {
     namespace = "aws:autoscaling:asg"
@@ -102,45 +108,9 @@ resource "aws_elastic_beanstalk_environment" "env" {
   }
 
   setting {
-    namespace = "aws:autoscaling:trigger"
-    name      = "Statistic"
-    value     = "Maximum"
-  }
-
-  setting {
-    namespace = "aws:autoscaling:trigger"
-    name      = "Unit"
-    value     = "Percent"
-  }
-
-  setting {
-    namespace = "aws:autoscaling:trigger"
-    name      = "Period"
-    value     = "60"
-  }
-
-  setting {
-    namespace = "aws:autoscaling:trigger"
-    name      = "BreachDuration"
-    value     = "60"
-  }
-
-  setting {
-    namespace = "aws:autoscaling:trigger"
-    name      = "UpperThreshold"
-    value     = "70"
-  }
-
-  setting {
-    namespace = "aws:autoscaling:trigger"
-    name      = "LowerThreshold"
-    value     = "30"
-  }
-
-  setting {
     namespace = "aws:autoscaling:asg"
     name      = "Cooldown"
-    value     = "60"
+    value     = "0"
   }
 
   setting {

@@ -5,4 +5,4 @@ scaling:
  min: 1
  max: 10
 
- Client: 30 threads
+ 4 clients with 30 threads each

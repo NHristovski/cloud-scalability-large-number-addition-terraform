@@ -52,7 +52,7 @@ resource "aws_route_table_association" "b" {
 
 resource "aws_security_group" "eb_sg" {
   name        = "eb-security-group"
-  description = "Allow access only from 92.53.13.240"
+  description = "Allow access only from 92.53.12.166"
   vpc_id      = aws_vpc.testing.id
 
   ingress {
@@ -60,7 +60,7 @@ resource "aws_security_group" "eb_sg" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = ["92.53.13.240/32"]
+    cidr_blocks = ["92.53.12.166/32"]
   }
 
   ingress {
@@ -68,7 +68,7 @@ resource "aws_security_group" "eb_sg" {
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
-    cidr_blocks = ["92.53.13.240/32"]
+    cidr_blocks = ["92.53.12.166/32"]
   }
 
   egress {
